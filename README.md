@@ -27,13 +27,16 @@
 Used Car pricing api service
 
 what this app will do:
-![img.png](basic.png)
+![img.png](images/basic.png)
 
 API's to be implemented
-![img.png](routes.png)
+![img.png](images/routes.png)
 
 How our app will be structured
-![img.png](img.png)
+![img.png](images/img.png)
+
+making a connection to sqlite
+![img.png](images/typeorm.png)
 ## Installation
 
 ```bash
