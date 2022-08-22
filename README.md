@@ -24,19 +24,23 @@
 
 ## Description
 
-Used Car pricing api service
+### Used Car pricing api service
 
-what this app will do:
+#### 1. what this app will do:
 ![img.png](images/basic.png)
 
-API's to be implemented
+#### 2. API's to be implemented
 ![img.png](images/routes.png)
 
-How our app will be structured
+#### 3. How our app will be structured
 ![img.png](images/img.png)
 
-making a connection to sqlite
+#### 4. making a connection to sqlite
 ![img.png](images/typeorm.png)
+
+#### 5.  Creating an entity
+![img.png](images/creating_entity.png)
+
 ## Installation
 
 ```bash
