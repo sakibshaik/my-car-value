@@ -7,6 +7,7 @@ import {
   Delete,
   Param,
   Query,
+  NotFoundException,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UsersService } from './users.service';
@@ -21,13 +22,21 @@ export class UsersController {
   }
 
   @Get('/:id')
-  findUser(@Param('id') id: string) {
-    return this.usersService.findOne(parseInt(id));
+  async findUser(@Param('id') id: string) {
+    const user = await this.usersService.findOne(parseInt(id));
+    if (!user) {
+      throw new NotFoundException('user doesnt exist');
+    }
+    return user;
   }
 
   @Get()
-  findAllUsers(@Query('email') email: string) {
-    return this.usersService.find(email);
+  async findAllUsers(@Query('email') email: string) {
+    const user = await this.usersService.find(email);
+    if (!user.length) {
+      throw new NotFoundException('user doesnt exist');
+    }
+    return user;
   }
 
   @Delete('/:id')
