@@ -16,6 +16,7 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 import { UserDto } from './dto/user.dto';
 
 @Controller('auth')
+@Serialize(UserDto)
 export class UsersController {
   constructor(private usersService: UsersService) {}
   @Post('/signup')
@@ -32,7 +33,6 @@ export class UsersController {
     return user;
   }
 
-  @Serialize(UserDto)
   @Get()
   async findAllUsers(@Query('email') email: string) {
     console.log('Handle is running');
