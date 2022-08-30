@@ -16,7 +16,8 @@ const cookieSession = require('cookie-session'); // due tsconfig mismatch
     ReportsModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'db.sqlite',
+      database:
+        process.env.NODE_ENV === 'test' ? 'test.db.sqlite' : 'db.sqlite',
       entities: [User, Report],
       synchronize: true,
     }),
