@@ -3,6 +3,9 @@ import { User } from '../../users/user.entity';
 
 export class ReportDto {
   @Expose()
+  id: number;
+
+  @Expose()
   price: number;
 
   @Expose()
@@ -26,4 +29,7 @@ export class ReportDto {
   @Expose()
   @Transform(({ obj }) => obj.user.id)
   userId: number;
+
+  @Expose()
+  approved: boolean;
 }
