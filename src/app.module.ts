@@ -44,11 +44,12 @@ import { type } from 'os';
   ],
 })
 export class AppModule {
+  constructor(private config: ConfigService) {}
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(
         cookieSession({
-          keys: ['harcoded-key'],
+          keys: [this.config.get('COOKIE_KEY')],
         }),
       )
       .forRoutes('*');
