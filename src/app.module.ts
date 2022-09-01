@@ -10,7 +10,8 @@ import { Report } from './reports/report.entity';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const cookieSession = require('cookie-session'); // due tsconfig mismatch
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { type } from 'os';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ormSettings = require('../ormconfig');
 
 @Module({
   imports: [
@@ -20,17 +21,7 @@ import { type } from 'os';
     }),
     UsersModule,
     ReportsModule,
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => {
-        return {
-          type: 'sqlite',
-          database: config.get<string>('DB_NAME'),
-          synchronize: true,
-          entities: [User, Report],
-        };
-      },
-    }),
+    TypeOrmModule.forRoot(ormSettings),
   ],
   controllers: [AppController],
   providers: [
